@@ -1,0 +1,10 @@
+{% extends 'blogg/base.html' %}
+{% block content %}
+    <h1>Bilder</h1>
+    <p>Her finner du noen av de fine bildene mine.</p>
+    <div class=article-content>
+        {% for foto in fotoer %}
+            <p>Bilde nr. {{foto}}</p>
+        {% endfor %}
+    </div>
+{% endblock content %}

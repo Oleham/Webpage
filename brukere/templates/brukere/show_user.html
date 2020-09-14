@@ -1,0 +1,49 @@
+{% extends 'blogg/base.html' %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profil.image.url }}">
+                <div class="media-body">
+                    <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
+                    <h3 class="account-heading">({{ user.username }})</h3>
+                    <p class="text-secondary">{{ user.email }}</p>
+                    <p class="text-secondary">{{ user.profil.bio }}</p>
+                </div>
+        </div>
+    </div>
+
+    <h1 class="mb-4 mt-4">{{ user.first_name }}s innlegg ({{ posts.paginator.count }})</h1>
+    {% for post in posts %}
+        <article class="media content-section">
+            <img class="rounded-circe article-img" src="{{ post.author.profil.image.url }}">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'profil-detail' post.author.username %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>
+                <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+
+    {% if posts.has_other_pages %}
+        {% if posts.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">Første</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Forrige</a>
+        {% endif %}
+
+        {% for numb in posts.paginator.page_range %}
+            {% if posts.number == numb %}    
+                <a class="btn btn-info mb-4" href="?page={{ numb }}">{{ numb }}</a>
+            {% elif numb > posts.number|add:'-3' and numb < posts.number|add:'3' %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ numb }}">{{ numb }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if posts.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Neste</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Siste</a>
+        {% endif %}
+    {% endif %}  
+{% endblock content %}

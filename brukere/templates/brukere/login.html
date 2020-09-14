@@ -1,0 +1,24 @@
+{% extends 'blogg/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Velkommen tilbake!</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Logg deg på</button>
+                <small class="ml-2">
+                    <a href="{% url 'password-reset' %}">Glemt passord?</a>
+                </small>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Trenger du en konto? <a class="ml-2" href="{% url 'register' %}">Registrer deg her!</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

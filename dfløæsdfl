@@ -1,0 +1,32 @@
+Help on Paginator in module django.core.paginator object:
+
+class PPaaggiinnaattoorr(builtins.object)
+ |  Methods defined here:
+ |  
+ |  ____iinniitt____(self, object_list, per_page, orphans=0, allow_empty_first_page=True)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  ccoouunntt = <django.utils.functional.cached_property object>
+ |  ggeett__ppaaggee(self, number)
+ |      Return a valid page, even if the page argument isn't a number or isn't
+ |      in range.
+ |  
+ |  nnuumm__ppaaggeess = <django.utils.functional.cached_property object>
+ |  ppaaggee(self, number)
+ |      Return a Page object for the given 1-based page number.
+ |  
+ |  vvaalliiddaattee__nnuummbbeerr(self, number)
+ |      Validate the given 1-based page number.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  ____ddiicctt____
+ |      dictionary for instance variables (if defined)
+ |  
+ |  ____wweeaakkrreeff____
+ |      list of weak references to the object (if defined)
+ |  
+ |  ppaaggee__rraannggee
+ |      Return a 1-based range of pages for iterating through within
+ |      a template for loop.

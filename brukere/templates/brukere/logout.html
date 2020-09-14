@@ -1,0 +1,9 @@
+{% extends 'blogg/base.html' %}
+{% block content %}
+    <h2>Takk for besøket!</h2>       
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class="ml-2" href="{% url 'login' %}">Logg på igjen</a>
+        </small>
+    </div>
+{% endblock content %}
